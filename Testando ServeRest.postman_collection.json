@@ -17,7 +17,9 @@
 							"pm.test(\"Cadastrado com sucesso\", function () {\r",
 							"    pm.response.to.have.status(201);\r",
 							"});\r",
-							""
+							"pm.test(\"Validar se o usuario foi cadastrado \", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Cadastro realizado com sucesso\");\r",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -28,7 +30,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "\r\n\r\n",
+					"raw": "{\r\n  \"nome\": \"Bruno Gomes\",\r\n  \"email\": \"brunoteste4@gmail.com\",\r\n  \"password\": \"teste\",\r\n  \"administrador\": \"true\"\r\n}\r\n\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -52,6 +54,19 @@
 		},
 		{
 			"name": "LIstar usuario cadastrado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Validar se apresentou a lista \", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"quantidade\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -82,7 +97,8 @@
 							"});\r",
 							"pm.test(\"Usuario nao encotrado\", function () {\r",
 							"    pm.response.to.have.status(400);\r",
-							"});"
+							"});\r",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -104,12 +120,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{link}}usuarios/SxMw5c5t1UgPyIoU",
+					"raw": "{{link}}usuarios/z3bRVAEjtcBTb9hv",
 					"host": [
 						"{{link}}usuarios"
 					],
 					"path": [
-						"SxMw5c5t1UgPyIoU"
+						"z3bRVAEjtcBTb9hv"
 					]
 				}
 			},
@@ -122,7 +138,9 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							""
+							"pm.test(\"Validar se o usuario foi excluido \", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Registro excluído com sucesso\");\r",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -132,12 +150,12 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{link}}usuarios/SxMw5c5t1UgPyIoU",
+					"raw": "{{link}}usuarios/cBB2nBLjgehay92i",
 					"host": [
 						"{{link}}usuarios"
 					],
 					"path": [
-						"SxMw5c5t1UgPyIoU"
+						"cBB2nBLjgehay92i"
 					]
 				}
 			},
@@ -155,6 +173,9 @@
 							"});\r",
 							"pm.test(\"Erro no preenchimento\", function () {\r",
 							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"pm.test(\"Validar Alteracao \", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Registro alterado com sucesso\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -166,7 +187,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"nome\": \"Bruno Gomes\",\r\n  \"email\": \"bruno@teste.teste.br\",\r\n  \"password\": \"\",\r\n  \"administrador\": \"false\"\r\n}",
+					"raw": "{\r\n  \"nome\": \"Bruno Gomes\",\r\n  \"email\": \"bruno@tes@teste.br\",\r\n  \"password\": \"testando\",\r\n  \"administrador\": \"false\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
